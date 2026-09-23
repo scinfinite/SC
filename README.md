@@ -1,73 +1,41 @@
 # SC Calculator
 
-A premium, fully functional calculator web experience named **SC Calculator**, designed around a polished glassmorphism UI, responsive interaction, accessibility, and production-quality verification.
+A premium, fully functional calculator web app with a glassmorphism UI, safe expression evaluation, scientific mode, history, memory, and theme preferences.
 
-## Project Status
+## Status
 
-**Current phase:** Phase 1 — Foundation & Core Calculator  
+**Current phase:** Phase 3 complete — production-ready core  
+**Stack:** Vite + React + TypeScript  
+**Specification:** docs/SC-CALCULATOR.md  
 **Roadmap:** docs/ROADMAP.md  
-**Product specification:** docs/SC-CALCULATOR.md  
-**Development workflow:** AGENTS.md
+**Workflow:** AGENTS.md
 
-> The repository is currently in the planning/foundation stage. The documentation and three-phase delivery workflow are established; implementation proceeds from Phase 1.
+## Features
 
-## Product vision
+- Arithmetic with operator precedence, decimals, percentages, and sign toggle
+- Clear, delete, parentheses, and equals
+- Scientific mode: sin/cos/tan, log/ln, sqrt, powers, factorial, π, e, DEG/RAD
+- Memory: MC, MR, M+, M-, MS
+- Calculation history with local persistence
+- Light / dark / system theme
+- Keyboard and pointer/touch input
+- Accessible labels, live display, visible focus, reduced-motion support
+- Safe parser — no unrestricted `eval()`
 
-SC Calculator will combine:
-- Reliable everyday arithmetic.
-- Advanced/scientific calculator capabilities.
-- Calculation history.
-- Local preferences.
-- Responsive mobile-first behavior.
-- Premium glassmorphism visuals.
-- Purposeful interaction animations.
-- Keyboard, touch, and pointer input.
-- Accessibility and reduced-motion support.
-- Automated testing and CI quality gates.
+## Commands
 
-## Planned delivery
+```bash
+npm install
+npm run dev
+npm test
+npm run lint
+npm run typecheck
+npm run build
+```
 
-### Phase 1 — Foundation & Core Calculator
-- Application architecture and tooling.
-- Glassmorphism design system and responsive shell.
-- Core calculator engine.
-- Basic arithmetic and input handling.
-- Keyboard/touch support.
-- Initial automated tests and CI.
+## Evaluation notes
 
-### Phase 2 — Advanced Features, History & Motion Polish
-- Scientific/advanced operations.
-- Memory functions.
-- Calculation history.
-- Preferences and themes.
-- Refined interaction animations.
-- Expanded test and accessibility coverage.
-
-### Phase 3 — Production Hardening & Release
-- Cross-device UX refinement.
-- Accessibility audit.
-- Performance optimization.
-- Comprehensive reliability testing.
-- CI/CD and release readiness.
-
-## Quality standard
-
-No phase is complete until its implementation and verification exit criteria pass.
-
-Continuous workflow:
-
-Inspect → Implement → Test → Fix → Review → Commit → Push/Merge → Verify CI → Advance Phase → Repeat
-
-See AGENTS.md for the continuous development workflow and phase-transition rules.
-
-## Documentation
-
-| Document | Purpose |
-| --- | --- |
-| docs/SC-CALCULATOR.md | Complete product, UX, technical, accessibility, testing, and quality specification |
-| docs/ROADMAP.md | Three-phase implementation roadmap and exit criteria |
-| AGENTS.md | Continuous implementation, verification, main-branch, CI, and phase-transition workflow |
-
-## Current repository state
-
-The project documentation has been established as the foundation for implementation. The next implementation work starts with the Phase 1 calculator foundation and should keep the repository green throughout development.
+- `^` is right-associative (`2^3^2` = 512)
+- `%` divides the preceding value by 100
+- Implicit multiplication is supported (`2π`, `2(3+4)`)
+- Division by zero and invalid input produce recoverable errors
