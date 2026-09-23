@@ -9,6 +9,7 @@ import {
   initialState,
   inputDecimal,
   inputDigit,
+  inputFactorial,
   inputOperator,
   toggleSign,
 } from "./session.ts";
@@ -48,7 +49,7 @@ describe("session", () => {
     assert.equal(s.result, "0");
   });
 
-  it("memory operations", () => {
+   it("memory operations", () => {
     let s = initialState();
     s = inputDigit(s, "1");
     s = inputDigit(s, "0");
@@ -58,6 +59,14 @@ describe("session", () => {
     assert.equal(s.memory, 20);
     s = applyMemory(s, "MC");
     assert.equal(s.memory, 0);
+  });
+
+  it("factorial input", () => {
+    let s = initialState();
+    s = inputDigit(s, "5");
+    s = inputFactorial(s);
+    s = equals(s);
+    assert.equal(s.result, "120");
   });
 
   it("divide by zero surfaces error", () => {

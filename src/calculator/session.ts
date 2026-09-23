@@ -89,6 +89,14 @@ export function inputFunction(state: CalcState, name: string): CalcState {
   return { ...state, expression: state.expression + token, error: null };
 }
 
+export function inputFactorial(state: CalcState): CalcState {
+  const token = "!";
+  if (state.justEvaluated) {
+    return { ...state, expression: state.result + token, justEvaluated: false, error: null };
+  }
+  return { ...state, expression: state.expression + token, error: null };
+}
+
 export function applyPercent(state: CalcState): CalcState {
   if (state.justEvaluated) return { ...state, expression: state.result + "%", justEvaluated: false, error: null };
   if (!state.expression) return state;
