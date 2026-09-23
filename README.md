@@ -1,6 +1,6 @@
 # SC Calculator
 
-A premium, fully functional calculator web app with a glassmorphism UI, safe expression evaluation, scientific mode, history, memory, and theme preferences.
+A premium, fully functional calculator web app with a layered glassmorphism UI, safe expression evaluation, scientific mode, history, memory, keyboard support, and theme/animation preferences.
 
 ## Status
 
@@ -14,13 +14,14 @@ A premium, fully functional calculator web app with a glassmorphism UI, safe exp
 
 - Arithmetic with operator precedence, decimals, percentages, and sign toggle
 - Clear, delete, parentheses, and equals
-- Scientific mode: sin/cos/tan, log/ln, sqrt, powers, factorial, π, e, DEG/RAD
-- Memory: MC, MR, M+, M-, MS
-- Calculation history with local persistence
-- Light / dark / system theme
-- Keyboard and pointer/touch input
-- Accessible labels, live display, visible focus, reduced-motion support
-- Safe parser — no unrestricted `eval()`
+- Scientific mode: sin/cos/tan, asin/acos/atan, log/ln, sqrt, abs, powers, factorial, π, e, DEG/RAD
+- Memory: MC, MR, M+, M-, MS with live value and toast feedback
+- Calculation history with local persistence and one-tap reuse
+- Light / dark / system theme with smooth transitions
+- Polished glassmorphism: layered surfaces, ambient lighting, and restrained motion
+- Keyboard (full), pointer, and touch input; comfortable touch targets
+- Accessible labels, live region, visible focus, reduced-motion support
+- Safe hand-written parser — no unrestricted `eval()`
 
 ## Commands
 

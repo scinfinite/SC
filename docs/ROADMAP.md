@@ -6,6 +6,14 @@
 
 Implementation lives on the application stack (Vite + React + TypeScript) with CI quality gates.
 
+### Premium refinement (post-Phase 3)
+
+- Elevated the glassmorphism design system: layered surfaces, ambient background lighting, soft borders, and controlled depth.
+- Added purposeful motion: shell/key entrance, button hover-lift and press feedback, result/operator transitions, theme transitions, and toast notifications; fully gated by `prefers-reduced-motion`.
+- Expanded scientific mode with absolute value, inverse trig (asin/acos/atan), and a factorial button.
+- Added toast feedback for memory and history actions and fuller keyboard support (Delete, factorial).
+- All quality gates (lint, typecheck, tests, production build) remain green.
+
 ## Phase 1 — Foundation & Core Calculator
 
 **Status: complete**
