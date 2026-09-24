@@ -13,6 +13,7 @@ Implementation lives on the application stack (Vite + React + TypeScript) with C
 - Expanded scientific mode with absolute value, inverse trig (asin/acos/atan), and a factorial button.
 - Added toast feedback for memory and history actions and fuller keyboard support (Delete, factorial).
 - All quality gates (lint, typecheck, tests, production build) remain green.
+- Hardening increment: square and reciprocal operations, parentheses in basic mode, sanitized history persistence, live system-theme updates, and expanded engine/session tests.
 
 ## Phase 1 — Foundation & Core Calculator
 
