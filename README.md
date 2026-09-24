@@ -14,7 +14,7 @@ A premium, fully functional calculator web app with a layered glassmorphism UI, 
 
 - Arithmetic with operator precedence, decimals, percentages, and sign toggle
 - Clear, delete, parentheses, and equals
-- Scientific mode: sin/cos/tan, asin/acos/atan, log/ln, sqrt, abs, powers, factorial, π, e, DEG/RAD
+- Scientific mode: sin/cos/tan, asin/acos/atan, log/ln, sqrt, abs, square, reciprocal, powers, factorial, π, e, DEG/RAD
 - Memory: MC, MR, M+, M-, MS with live value and toast feedback
 - Calculation history with local persistence and one-tap reuse
 - Light / dark / system theme with smooth transitions
