@@ -97,6 +97,39 @@ export function inputFactorial(state: CalcState): CalcState {
   return { ...state, expression: state.expression + token, error: null };
 }
 
+function currentTerm(state: CalcState): string {
+  if (state.justEvaluated && state.error === null) return state.result;
+  const expr = state.expression.trim();
+  return expr || state.result || "0";
+}
+
+function wrapExpression(state: CalcState, wrap: (term: string) => string): CalcState {
+  const term = currentTerm(state);
+  return { ...state, expression: wrap(term), error: null, justEvaluated: false };
+}
+
+export function inputSquare(state: CalcState): CalcState {
+  return wrapExpression(state, (term) => `(${term})^2`);
+}
+
+export function inputReciprocal(state: CalcState): CalcState {
+  return wrapExpression(state, (term) => `1/(${term})`);
+}
+
+export function sanitizeHistory(raw: unknown): HistoryItem[] {
+  if (!Array.isArray(raw)) return [];
+  const items: HistoryItem[] = [];
+  for (const entry of raw) {
+    if (!entry || typeof entry !== "object") continue;
+    const rec = entry as Record<string, unknown>;
+    if (typeof rec.id !== "string" || typeof rec.expression !== "string" || typeof rec.result !== "string") continue;
+    if (!rec.id || rec.expression.length > 200 || rec.result.length > 80) continue;
+    items.push({ id: rec.id, expression: rec.expression, result: rec.result });
+    if (items.length >= MAX_HISTORY) break;
+  }
+  return items;
+}
+
 export function applyPercent(state: CalcState): CalcState {
   if (state.justEvaluated) return { ...state, expression: state.result + "%", justEvaluated: false, error: null };
   if (!state.expression) return state;
