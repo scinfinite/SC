@@ -56,11 +56,19 @@ describe("evaluate", () => {
     assert.throws(() => evaluate("log(0)"));
     assert.throws(() => evaluate("asin(2)"));
   });
+
+  it("handles chained ops, large values, and inverse trig", () => {
+    assert.equal(evaluate("100/4/5"), 5);
+    assert.ok(evaluate("10^8") === 100_000_000);
+    assert.ok(Math.abs(evaluate("asin(1)", "deg") - 90) < 1e-10);
+    assert.ok(Math.abs(evaluate("atan(0)", "deg")) < 1e-10);
+  });
 });
 
 describe("formatNumber", () => {
   it("formats ordinary numbers", () => {
     assert.equal(formatNumber(0), "0");
     assert.equal(formatNumber(2.5), "2.5");
+    assert.equal(formatNumber(-0), "0");
   });
 });
