@@ -6,6 +6,13 @@
 
 Implementation lives on the application stack (Vite + React + TypeScript) with CI quality gates.
 
+### Hardening increment (post-Phase 3)
+
+- Dedicated square (`x²`) and reciprocal (`1/x`) operations, available on the basic keypad with parentheses.
+- History loaded from localStorage is sanitized (shape, length, and bound).
+- Memory actions now use the same toast path as history clear.
+- Session tests cover square, reciprocal, and history sanitization.
+
 ### Premium refinement (post-Phase 3)
 
 - Elevated the glassmorphism design system: layered surfaces, ambient background lighting, soft borders, and controlled depth.
