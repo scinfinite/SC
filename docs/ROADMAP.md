@@ -14,6 +14,14 @@ Implementation lives on the application stack (Vite + React + TypeScript) with C
 - Added toast feedback for memory and history actions and fuller keyboard support (Delete, factorial).
 - All quality gates (lint, typecheck, tests, production build) remain green.
 
+### Hardening increment (square, reciprocal, history safety)
+
+- Square (`x²`) and reciprocal (`1/x`) wrap the current term safely and evaluate through the existing parser.
+- Basic keypad extras row: parentheses, square, reciprocal, square root.
+- History load path rejects malformed, oversized, or incomplete persisted entries.
+- Additional session/engine tests for parentheses, wrap ops, inverse trig, and chained division.
+- Premium glassmorphism stylesheet kept intact (not replaced by compact stubs).
+
 ## Phase 1 — Foundation & Core Calculator
 
 **Status: complete**
