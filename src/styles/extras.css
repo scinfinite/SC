@@ -1,0 +1,4 @@
+.keys.extras {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  margin-bottom: 0.55rem;
+}
