@@ -11,6 +11,10 @@ import {
   inputDigit,
   inputFactorial,
   inputOperator,
+  inputParen,
+  inputReciprocal,
+  inputSquare,
+  sanitizeHistory,
   toggleSign,
 } from "./session.ts";
 
@@ -49,7 +53,7 @@ describe("session", () => {
     assert.equal(s.result, "0");
   });
 
-   it("memory operations", () => {
+  it("memory operations", () => {
     let s = initialState();
     s = inputDigit(s, "1");
     s = inputDigit(s, "0");
@@ -76,5 +80,42 @@ describe("session", () => {
     s = inputDigit(s, "0");
     s = equals(s);
     assert.equal(s.error, "Cannot divide by zero");
+  });
+
+  it("squares and takes reciprocal", () => {
+    let s = initialState();
+    s = inputDigit(s, "5");
+    s = inputSquare(s);
+    s = equals(s);
+    assert.equal(s.result, "25");
+    s = inputReciprocal(s);
+    s = equals(s);
+    assert.equal(s.result, "0.04");
+  });
+
+  it("supports parentheses in the session", () => {
+    let s = initialState();
+    s = inputParen(s, "(");
+    s = inputDigit(s, "2");
+    s = inputOperator(s, "+");
+    s = inputDigit(s, "3");
+    s = inputParen(s, ")");
+    s = inputOperator(s, "×");
+    s = inputDigit(s, "4");
+    s = equals(s);
+    assert.equal(s.result, "20");
+  });
+
+  it("sanitizes persisted history", () => {
+    const clean = sanitizeHistory([
+      { id: "a", expression: "1+1", result: "2" },
+      { id: 1, expression: "bad" },
+      { expression: "no-id", result: "0" },
+      null,
+      { id: "b", expression: "x".repeat(201), result: "1" },
+    ]);
+    assert.equal(clean.length, 1);
+    assert.equal(clean[0]?.id, "a");
+    assert.deepEqual(sanitizeHistory("nope"), []);
   });
 });
