@@ -11,6 +11,9 @@ import {
   inputDigit,
   inputFactorial,
   inputOperator,
+  inputReciprocal,
+  inputSquare,
+  sanitizeHistory,
   toggleSign,
 } from "./session.ts";
 
@@ -67,6 +70,30 @@ describe("session", () => {
     s = inputFactorial(s);
     s = equals(s);
     assert.equal(s.result, "120");
+  });
+
+  it("squares and reciprocals wrap the current term", () => {
+    let s = initialState();
+    s = inputDigit(s, "5");
+    s = inputSquare(s);
+    s = equals(s);
+    assert.equal(s.result, "25");
+    s = inputReciprocal(s);
+    s = equals(s);
+    assert.equal(s.result, "0.04");
+  });
+
+  it("sanitizes persisted history", () => {
+    const clean = sanitizeHistory([
+      { id: "1", expression: "1+1", result: "2" },
+      { id: 2, expression: "bad" },
+      { expression: "x", result: "y" },
+      { id: "ok", expression: "2+2", result: "4" },
+    ]);
+    assert.equal(clean.length, 2);
+    assert.equal(clean[0]?.id, "1");
+    assert.equal(clean[1]?.result, "4");
+    assert.deepEqual(sanitizeHistory("nope"), []);
   });
 
   it("divide by zero surfaces error", () => {
