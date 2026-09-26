@@ -1,7 +1,7 @@
 name: CI
 on:
   push:
-    branches: [main, phase-1-foundation, phase-2-advanced-features, phase-3-production-hardening]
+    branches: [main, phase-1-foundation, phase-2-advanced-features, phase-3-production-hardening, phase-3-hardening-increment, phase-3-hardening-increment-3]
   pull_request:
 jobs:
   verify:
